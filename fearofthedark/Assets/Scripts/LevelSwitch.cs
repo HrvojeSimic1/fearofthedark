@@ -6,12 +6,15 @@ using UnityEngine;
 public class LevelSwitch : MonoBehaviour
 {
 
-    public Scene nextLevel;
+    public int levelNumber;
     public void NextScene()
     {
-        SceneManager.LoadScene("TestingGrounds");
+        SceneManager.LoadScene(levelNumber);
     }
 
-
+    public void doExitGame()
+    {
+        Application.Quit();
+    }
     
 }
