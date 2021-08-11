@@ -4,24 +4,32 @@ public class PlayerMovement : MonoBehaviour
 {
 	private Rigidbody _rigidbody;
 	[SerializeField] Camera followCamera;
-	[SerializeField] float mouseSensitivity;
 
 	[SerializeField] float moveSpeed;
 	[SerializeField] float jumpForce;
+
+	private float _vertical;
+	private float _horizontal;
 
 	private void Start()
 	{
 		_rigidbody = GetComponent<Rigidbody>();
 	}
 
-	void Update()
+	private void Update()
+	{
+		_vertical = Input.GetAxis("Vertical");
+		_horizontal = Input.GetAxis("Horizontal");
+	}
+
+	void FixedUpdate()
 	{
 		var transformAngles = transform.eulerAngles;
 		transformAngles.y = followCamera.transform.eulerAngles.y;
 		transform.eulerAngles = transformAngles;
 
-		_rigidbody.MovePosition(transform.position + (transform.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime)
-			+ (transform.right * Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime));
+		_rigidbody.MovePosition(transform.position + (transform.forward * _vertical * moveSpeed * Time.deltaTime)
+			+ (transform.right * _horizontal * moveSpeed * Time.deltaTime));
 
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
