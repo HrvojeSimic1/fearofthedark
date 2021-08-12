@@ -12,14 +12,14 @@ public class CameraRotation : MonoBehaviour
 	{
 		_mouseX = Input.GetAxis("Mouse X");
 		_mouseY = Input.GetAxis("Mouse Y");
-	}
-
-	void FixedUpdate()
-	{
 		_horizontalMovement += _mouseX * mouseSensitivity;
 		_verticalMovement -= _mouseY * mouseSensitivity;
 		
 		_verticalMovement = Mathf.Clamp(_verticalMovement, -40, 40);
+	}
+
+	void FixedUpdate()
+	{
 		transform.eulerAngles = new Vector3(_verticalMovement, _horizontalMovement, 0);
 	}
 

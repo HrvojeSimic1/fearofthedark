@@ -6,7 +6,7 @@ public class Follow : MonoBehaviour
 
 	[SerializeField] Vector3 Offset;
 
-	private void FixedUpdate()
+	private void Update()
 	{
 		transform.position = followObject.position + Offset;
 	}
