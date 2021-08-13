@@ -4,11 +4,10 @@ public class Follow : MonoBehaviour
 {
 	[SerializeField] Transform followObject;
 
-	public float OffsetX;
-	public float OffsetY;
+	[SerializeField] Vector3 Offset;
 
 	private void Update()
 	{
-		transform.position = followObject.position + Vector3.right * OffsetX + Vector3.up * OffsetY;
+		transform.position = followObject.position + Offset;
 	}
 }
