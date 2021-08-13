@@ -138,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 8363288046369167815, guid: ff325768761a502439c0664622d8cbd5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8363288046369167815, guid: ff325768761a502439c0664622d8cbd5,
         type: 3}
@@ -1612,7 +1612,7 @@ Transform:
   - {fileID: 960395013}
 >>>>>>> Stashed changes
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &611177062
 GameObject:
@@ -1830,6 +1830,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 683973277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 300, y: 0, z: 0}
@@ -1840,6 +1841,21 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &683973279
 BoxCollider:
+=======
+  m_GameObject: {fileID: 692380515}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 73.4, y: -0.8, z: -70.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 49818100}
+  - {fileID: 1294892906}
+  - {fileID: 1118873836}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &705507993
+GameObject:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2038,7 +2054,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &764788103
 GameObject:
@@ -3455,6 +3471,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478264281}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &1571170509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3634,6 +3651,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589913500}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1637800810
 GameObject:
   m_ObjectHideFlags: 0
@@ -4231,7 +4250,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9f29b1e8dc9127f439ecd0ea4a0d9de3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f29b1e8dc9127f439ecd0ea4a0d9de3,
         type: 3}
