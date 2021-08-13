@@ -12,7 +12,7 @@ public class SimpleAIBehaviour : AIComponents
 		}
 	}
 
-	private void Update()
+	private void FixedUpdate()
 	{
 		if (followTarget)
 		{
