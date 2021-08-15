@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		_rigidbody.MovePosition(transform.position + (transform.forward * _vertical * moveSpeed * Time.deltaTime)
-			+ (transform.right * _horizontal * moveSpeed * Time.deltaTime));
+		_rigidbody.AddForce((transform.forward * _vertical * moveSpeed * Time.deltaTime)
+			+ (transform.right * _horizontal * moveSpeed * Time.deltaTime), ForceMode.VelocityChange);
 	}
 }
