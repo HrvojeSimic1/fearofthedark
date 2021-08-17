@@ -27,12 +27,9 @@ public class PlayerMovement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		Vector3 force = ((transform.forward * _vertical * moveSpeed * Time.deltaTime)
-					+ (transform.right * _horizontal * moveSpeed * Time.deltaTime)) * smoothness;
+		Vector3 force = ((transform.forward * _vertical * moveSpeed)
+					+ (transform.right * _horizontal * moveSpeed)) * smoothness;
 
-		if (Physics.Raycast(new Ray(transform.position, Vector3.down), 1f))
-		{
-			_rigidbody.AddForce(force - _rigidbody.velocity, ForceMode.VelocityChange);
-		}
+		_rigidbody.AddForce(force - new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z), ForceMode.VelocityChange);
 	}
 }
