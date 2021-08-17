@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] Camera followCamera;
 
 	[SerializeField] float moveSpeed;
+	[SerializeField] float smoothness;
 
 	private float _vertical;
 	private float _horizontal;
@@ -26,7 +27,9 @@ public class PlayerMovement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		_rigidbody.AddForce((transform.forward * _vertical * moveSpeed * Time.deltaTime)
-			+ (transform.right * _horizontal * moveSpeed * Time.deltaTime), ForceMode.VelocityChange);
+		Vector3 force = ((transform.forward * _vertical * moveSpeed)
+					+ (transform.right * _horizontal * moveSpeed)) * smoothness;
+
+		_rigidbody.AddForce(force - new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z), ForceMode.VelocityChange);
 	}
 }
