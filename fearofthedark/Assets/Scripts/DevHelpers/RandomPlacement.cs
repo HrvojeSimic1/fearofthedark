@@ -11,8 +11,16 @@ public class RandomPlacement : MonoBehaviour
 	public int theSameValue;
 	public bool useTheSameValue;
 	[Space]
-	public bool Apply = false;
+	public int numberOfRandElem;
+	[Space]
+	public bool removeChanges;
+	[Space]
+	[Space]
+	public bool apply;
+
 	public List<GameObject> toSpawnObjects;
+
+	private List<GameObject> resetList = new List<GameObject>();
 
 	private void Update()
 	{
@@ -22,18 +30,28 @@ public class RandomPlacement : MonoBehaviour
 			temp.x = temp.y = temp.z = theSameValue;
 			range = temp;
 		}
-		if (Apply)
+		if (apply)
 		{
-			for (int i = 0; i < toSpawnObjects.Count; i++)
+			for (int i = 0; i < numberOfRandElem; i++)
 			{
 				Vector3 position = Target.transform.position;
 
-				Instantiate(
+				resetList.Add(Instantiate(
 					toSpawnObjects?.ElementAt(Random.Range(0, toSpawnObjects.Count - 1)),
 					new Vector3(position.x + Random.Range(0, range.x), position.y + Random.Range(0, range.y), position.z + Random.Range(0, range.z)),
-					Quaternion.identity, Target.transform.parent);
+					Quaternion.identity, Target.transform.parent));
 		}
-			Apply = false;
+			apply = false;
+		}
+
+		if (removeChanges)
+		{
+			removeChanges = false;
+			for (int i = 0; i < resetList.Count; i++)
+			{
+				DestroyImmediate(resetList[i]);
+			}
+			resetList.Clear();
 		}
 
 		if (Target == null) return; 
