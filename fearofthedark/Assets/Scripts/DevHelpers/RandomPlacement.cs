@@ -10,10 +10,12 @@ public class RandomPlacement : MonoBehaviour
 	public Vector3Int range;
 	public int theSameValue;
 	public bool useTheSameValue;
+	public Vector3Int offset;
 	[Space]
-	public int numberOfRandElem;
+	[Range(0, 100)]
+	public int frequency;
 	[Space]
-	public bool removeChanges;
+	public bool removeLastChanges;
 	[Space]
 	[Space]
 	public bool apply;
@@ -32,21 +34,26 @@ public class RandomPlacement : MonoBehaviour
 		}
 		if (apply)
 		{
-			for (int i = 0; i < numberOfRandElem; i++)
+			resetList.Clear();
+			for (int i = 0; i < frequency; i++)
 			{
 				Vector3 position = Target.transform.position;
+				GameObject randomElement = toSpawnObjects?.ElementAt(Random.Range(0, toSpawnObjects.Count - 1));
 
-				resetList.Add(Instantiate(
-					toSpawnObjects?.ElementAt(Random.Range(0, toSpawnObjects.Count - 1)),
-					new Vector3(position.x + Random.Range(0, range.x), position.y + Random.Range(0, range.y), position.z + Random.Range(0, range.z)),
-					Quaternion.identity, Target.transform.parent));
-		}
+				if (!resetList.Contains(randomElement))
+				{
+					resetList.Add(Instantiate(
+						randomElement,
+						new Vector3(position.x + Random.Range(-range.x, range.x) + offset.x, position.y + Random.Range(-range.y, range.y) + offset.y, position.z + Random.Range(-range.z, range.z) + offset.z),
+						Quaternion.identity, Target.transform));
+				}
+			}
 			apply = false;
 		}
 
-		if (removeChanges)
+		if (removeLastChanges)
 		{
-			removeChanges = false;
+			removeLastChanges = false;
 			for (int i = 0; i < resetList.Count; i++)
 			{
 				DestroyImmediate(resetList[i]);
@@ -54,9 +61,23 @@ public class RandomPlacement : MonoBehaviour
 			resetList.Clear();
 		}
 
-		if (Target == null) return; 
-		Debug.DrawLine(Target.transform.position - new Vector3(range.x, 0, 0), Target.transform.position + new Vector3(range.x, 0, 0), Color.red);
-		Debug.DrawLine(Target.transform.position - new Vector3(0, range.y, 0), Target.transform.position + new Vector3(0, range.y, 0), Color.green);
-		Debug.DrawLine(Target.transform.position - new Vector3(0, 0, range.z), Target.transform.position + new Vector3(0, 0, range.z), Color.blue);
+		if (Target == null)
+		{
+			return;
+		}
+
+		DrawRGBLines();
+	}
+
+	private void DrawRGBLines()
+	{
+		Vector3 position = Target.transform.position;
+		Vector3 offsetX = new Vector3(offset.x, 0);
+		Vector3 offsetY = new Vector3(0, offset.y);
+		Vector3 offsetZ = new Vector3(0, 0, offset.z);
+
+		Debug.DrawLine(position - new Vector3(range.x, 0, 0) + offsetX, position + new Vector3(range.x, 0, 0) + offsetX, Color.red);
+		Debug.DrawLine(position - new Vector3(0, range.y, 0) + offsetY, position + new Vector3(0, range.y, 0) + offsetY, Color.green);
+		Debug.DrawLine(position - new Vector3(0, 0, range.z) + offsetZ, position + new Vector3(0, 0, range.z) + offsetZ, Color.blue);
 	}
 }
