@@ -5,12 +5,25 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class RandomPlacement : MonoBehaviour
 {
+	#region Display
+	[System.Serializable]
+	public struct Vector3Lock
+	{
+		public bool x, y, z;
+	}
+
 	public GameObject Target;
+	public bool useTargetAsParent;
 	[Space]
 	public Vector3Int range;
 	public int theSameValue;
 	public bool useTheSameValue;
+	[Space]
+	[Space]
 	public Vector3Int offset;
+	[Space]
+	public Vector3Lock lockRandomRotation;
+	[Space]
 	[Space]
 	[Range(0, 100)]
 	public int frequency;
@@ -19,10 +32,13 @@ public class RandomPlacement : MonoBehaviour
 	[Space]
 	[Space]
 	public bool apply;
-
+	[Space]
+	[Space]
 	public List<GameObject> toSpawnObjects;
+	#endregion
 
-	private List<GameObject> resetList = new List<GameObject>();
+
+	private List<List<GameObject>> resetList = new List<List<GameObject>>();
 
 	private void Update()
 	{
@@ -34,39 +50,47 @@ public class RandomPlacement : MonoBehaviour
 		}
 		if (apply)
 		{
-			resetList.Clear();
+			apply = false;
+			var tempStore = new List<GameObject>();
 			for (int i = 0; i < frequency; i++)
 			{
 				Vector3 position = Target.transform.position;
 				GameObject randomElement = toSpawnObjects?.ElementAt(Random.Range(0, toSpawnObjects.Count - 1));
 
-				if (!resetList.Contains(randomElement))
-				{
-					resetList.Add(Instantiate(
+				tempStore.Add(Instantiate(
 						randomElement,
 						new Vector3(position.x + Random.Range(-range.x, range.x) + offset.x, position.y + Random.Range(-range.y, range.y) + offset.y, position.z + Random.Range(-range.z, range.z) + offset.z),
-						Quaternion.identity, Target.transform));
-				}
+						QuaternionRandomRotation(lockRandomRotation.x, lockRandomRotation.y, lockRandomRotation.z), 
+						useTargetAsParent ? Target.transform : null));
+
 			}
-			apply = false;
+			resetList.Add(tempStore);
 		}
 
 		if (removeLastChanges)
 		{
 			removeLastChanges = false;
-			for (int i = 0; i < resetList.Count; i++)
+			for (int i = 0; i < resetList[resetList.Count - 1].Count; i++)
 			{
-				DestroyImmediate(resetList[i]);
+				DestroyImmediate(resetList[resetList.Count - 1][i]);
 			}
-			resetList.Clear();
+			resetList.RemoveAt(resetList.Count - 1);
 		}
 
-		if (Target == null)
-		{
-			return;
-		}
+		if (Target == null) return;
 
 		DrawRGBLines();
+	}
+
+	private Quaternion QuaternionRandomRotation(bool freezeX, bool freezeY, bool freezeZ)
+	{
+		Quaternion quaternion = Random.rotation;
+		var copy = quaternion.eulerAngles;
+		if (freezeX) copy.x = 0;
+		if (freezeY) copy.y = 0;
+		if (freezeZ) copy.z = 0;
+		quaternion.eulerAngles = copy;
+		return quaternion;
 	}
 
 	private void DrawRGBLines()
