@@ -4,9 +4,15 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class CopyComponents : MonoBehaviour
 {
+	public enum Direction
+	{
+		Up, Down, Left, Right, Forward, Back
+	}
+
 	public GameObject objectToCopy;
 	[Space]
 	public Vector3 offset;
+	public Direction direction;
 	[Space]
 	public int number;
 	[Space]
@@ -18,6 +24,7 @@ public class CopyComponents : MonoBehaviour
 
 	private List<GameObject> resetList = new List<GameObject>();
 
+
 	private void Update()
 	{
 		if (apply)
@@ -26,8 +33,12 @@ public class CopyComponents : MonoBehaviour
 			var position = objectToCopy.transform.position;
 			for (int i = 0; i < number; i++)
 			{
+				Vector3 meshSize = meshRenderer.bounds.size;
+
 				resetList.Add(Instantiate(objectToCopy, position, Quaternion.identity));
-				position.x += meshRenderer.bounds.size.x;
+
+				ChangeAxies(ref position, ref meshSize);
+
 				position += offset;
 			}
 		}
@@ -40,6 +51,42 @@ public class CopyComponents : MonoBehaviour
 				DestroyImmediate(resetList[i]);
 			}
 			resetList.Clear();
+		}
+
+		Draw();
+	}
+
+
+	private void Draw()
+	{
+		Vector3 drawEnd = objectToCopy.transform.position;
+		Vector3 meshExtends = meshRenderer.bounds.extents;
+
+		for (int i = 0; i < number; i++)
+		{
+			var lastPosition = drawEnd;
+			ChangeAxies(ref drawEnd, ref meshExtends);
+			Debug.DrawLine(lastPosition, drawEnd, Color.red);
+			drawEnd += offset;
+		}
+	}
+
+	private void ChangeAxies(ref Vector3 position, ref Vector3 meshSize)
+	{
+		switch (direction)
+		{
+			case Direction.Up:
+			case Direction.Down:
+				position.y += meshSize.y;
+				break;
+			case Direction.Left:
+			case Direction.Right:
+				position.x += meshSize.x;
+				break;
+			case Direction.Forward:
+			case Direction.Back:
+				position.z = meshSize.z;
+				break;
 		}
 	}
 }
