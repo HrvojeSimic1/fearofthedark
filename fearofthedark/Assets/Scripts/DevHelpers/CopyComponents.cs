@@ -100,35 +100,4 @@ public class CopyComponents : MonoBehaviour
 				break;
 		}
 	}
-	private Vector3 GetInputDirection()
-	{
-		Vector3 dir = Vector3.zero;
-		switch (direction)
-		{
-			case Direction.Up:
-				dir = Vector3.up;
-				break;
-			case Direction.Down:
-				dir = Vector3.down;
-				break;
-			case Direction.Left:
-				dir = Vector3.left;
-				break;
-			case Direction.Right:
-				dir = Vector3.right;
-				break;
-			case Direction.Forward:
-				dir = Vector3.forward;
-				break;
-			case Direction.Back:
-				dir = Vector3.back;
-				break;
-		}
-		return dir;
-	}
-
-	public static Vector3 MultiplayAxies(Vector3 a, Vector3 b)
-	{
-		return new Vector3(a.x + b.x, a.y + b.y, a.z + b.z);
-	}
 }
