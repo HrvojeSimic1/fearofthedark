@@ -13,23 +13,13 @@ public class Quadrapet : AnimalAI
 
 	private void Update()
 	{
-		if (Physics.Raycast(new Ray(transform.position, endPoint.position - transform.position), out RaycastHit info) == false
+		if (Physics.Raycast(new Ray(transform.position, endPoint.position - transform.position)) == false
 			|| Physics.Raycast(new Ray(transform.position, transform.forward), 4f))
 		{
 			target.x *= -1;
 			target.z *= -1;
 			target -= GetRandomVector3();
 		}
-
-		if (movementAnim == null) return;
-		
-		if (isInColliderRange)
-		{
-
-			movementAnim.Play(0);
-		}
-
-		movementAnim.Play(1);
 	}
 
 	private void FixedUpdate()
@@ -57,19 +47,6 @@ public class Quadrapet : AnimalAI
 		if (other.CompareTag("Player") || other.CompareTag("Enemy"))
 		{
 			isInColliderRange = true;
-		}
-	}
-
-	private void OnTriggerStay(Collider other)
-	{
-		if (animalSound == null)
-		{
-			return;
-		}
-
-		if (other.CompareTag("Player") || other.CompareTag("Enemy"))
-		{
-			animalSound.Play(0);
 		}
 	}
 
