@@ -56,7 +56,7 @@ public class RandomPlacement : MonoBehaviour
 			for (int i = 0; i < frequency; i++)
 			{
 				Vector3 position = Target.transform.position;
-				GameObject randomElement = toSpawnObjects?.ElementAt(Random.Range(0, toSpawnObjects.Count - 1));
+				GameObject randomElement = toSpawnObjects?.ElementAt(Random.Range(0, toSpawnObjects.Count));
 
 				tempStore.Add(PrefabUtility.InstantiatePrefab(randomElement,Target.transform) as GameObject);
 

@@ -6,6 +6,11 @@ public class MovingAIBehaviour : MonoBehaviour
 	[SerializeField] float speed;
 	private Transform target;
 
+	private void Start()
+	{
+		target = transform;
+	}
+
 	private void Update()
 	{
 		target = parentComponent.Target;
