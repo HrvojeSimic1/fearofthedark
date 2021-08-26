@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -55,13 +56,15 @@ public class RandomPlacement : MonoBehaviour
 			for (int i = 0; i < frequency; i++)
 			{
 				Vector3 position = Target.transform.position;
-				GameObject randomElement = toSpawnObjects?.ElementAt(Random.Range(0, toSpawnObjects.Count - 1));
+				GameObject randomElement = toSpawnObjects?.ElementAt(Random.Range(0, toSpawnObjects.Count));
 
-				tempStore.Add(Instantiate(
-						randomElement,
-						new Vector3(position.x + Random.Range(-range.x, range.x) + offset.x, position.y + Random.Range(-range.y, range.y) + offset.y, position.z + Random.Range(-range.z, range.z) + offset.z),
-						QuaternionRandomRotation(lockRandomRotation.x, lockRandomRotation.y, lockRandomRotation.z), 
-						useTargetAsParent ? Target.transform : null));
+				tempStore.Add(PrefabUtility.InstantiatePrefab(randomElement,Target.transform) as GameObject);
+
+				tempStore[i].transform.position = new Vector3(position.x + Random.Range(-range.x, range.x) + offset.x, position.y
+					+ Random.Range(-range.y, range.y)
+					+ offset.y, position.z + Random.Range(-range.z, range.z) + offset.z);
+
+				tempStore[i].transform.rotation = QuaternionRandomRotation(lockRandomRotation.x, lockRandomRotation.y, lockRandomRotation.z);
 
 			}
 			resetList.Add(tempStore);

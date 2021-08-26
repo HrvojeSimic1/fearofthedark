@@ -4,16 +4,12 @@ public abstract class AnimalAI : MonoBehaviour
 {
 	protected int midMoveSpeed;
 	protected int maxMoveSpeed;
-	public AudioSource animalSound;
-	public Animator movementAnim;
 
-	protected new Collider thisCollider;
 	protected Vector3 target;
 	protected bool isInColliderRange;
 
 	protected void Start()
 	{
-		thisCollider = GetComponent<Collider>();
 		target = transform.position;
 	}
 
