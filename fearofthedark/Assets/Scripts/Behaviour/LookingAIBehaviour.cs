@@ -11,7 +11,6 @@ public class LookingAIBehaviour : MonoBehaviour
 
 	private void Update()
 	{
-
 		transform.LookAt(target);
 	}
 }
