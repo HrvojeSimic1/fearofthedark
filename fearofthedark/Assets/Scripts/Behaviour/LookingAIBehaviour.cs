@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NoMovingAIBehaviour : MonoBehaviour
+public class LookingAIBehaviour : MonoBehaviour
 {
 	private Transform target;
 
@@ -11,7 +11,7 @@ public class NoMovingAIBehaviour : MonoBehaviour
 
 	private void Update()
 	{
-		target.position = new Vector3(target.position.x, transform.position.y, target.position.z);
+
 		transform.LookAt(target);
 	}
 }
