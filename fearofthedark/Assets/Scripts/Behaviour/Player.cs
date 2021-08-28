@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
 	private Rigidbody _rigidbody;
 	[SerializeField] Camera followCamera;
 
 	[SerializeField] float moveSpeed;
 	[SerializeField] float smoothness;
+	[SerializeField] AudioSource walkSound;
 
 	private float _vertical;
 	private float _horizontal;
@@ -23,7 +24,13 @@ public class PlayerMovement : MonoBehaviour
 		var transformAngles = transform.eulerAngles;
 		transformAngles.y = followCamera.transform.eulerAngles.y;
 		transform.eulerAngles = transformAngles;
+
+		if(_vertical + _horizontal > 0.1f && !walkSound.isPlaying)
+		{
+			walkSound.Play();
+		}
 	}
+
 
 	void FixedUpdate()
 	{
