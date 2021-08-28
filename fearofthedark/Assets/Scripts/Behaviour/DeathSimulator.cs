@@ -26,6 +26,7 @@ public class DeathSimulator : MonoBehaviour
 		if (collision.collider.CompareTag("Enemy"))
 		{
 			health -= damagePerHit;
+			print(health);
 			healthBar.SetHealth(health);
 		}
 	}
@@ -35,6 +36,7 @@ public class DeathSimulator : MonoBehaviour
 		if (other.CompareTag("Dark"))
 		{
 			health -= damagePerHit;
+			Debug.Log(other, other);
 			healthBar.SetHealth(health);
 		}
 	}
