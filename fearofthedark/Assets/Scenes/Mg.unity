@@ -169,13 +169,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToCopyTransform: {fileID: 0}
-  originalPrefab: {fileID: 666959161413015694, guid: b82ade456ad69294bb502db8223f5a95,
-    type: 3}
   useAsParent: {fileID: 0}
   offset: {x: 30, y: 0, z: 0}
   direction: 2
   number: 18
-  meshRenderer: {fileID: 0}
+  meshRenderers: []
   removeChanges: 0
   apply: 0
 --- !u!1 &57514003
