@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 666959161413015729}
   - component: {fileID: 666959161413015728}
   - component: {fileID: 666959161413015695}
+  - component: {fileID: 194063192302988344}
   m_Layer: 0
   m_Name: StreetLight
   m_TagString: Untagged
@@ -82,6 +83,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &194063192302988344
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666959161413015694}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25528875, y: 3.475417, z: 0.3}
+  m_Center: {x: 0.00000014901161, y: 1.7294759, z: 0}
 --- !u!1001 &9037452560456996527
 PrefabInstance:
   m_ObjectHideFlags: 0
