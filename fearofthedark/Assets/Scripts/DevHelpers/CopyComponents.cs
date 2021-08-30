@@ -33,19 +33,22 @@ public class CopyComponents : MonoBehaviour
 	private void Update()
 	{
 		if (objectToCopyTransform == null) return;
+		if(meshRenderers != null)
+		{
+			meshRenderers = originalPrefab.GetComponentsInChildren<MeshRenderer>();
+		}
 
-		Bounds objectBounds = new Bounds(objectToCopyTransform.position, Vector3.zero);
+		Bounds combinedBounds = new Bounds(meshRenderers[0].transform.position, Vector3.zero);
 
 		originalPrefab = PrefabUtility.GetCorrespondingObjectFromSource(objectToCopyTransform.gameObject);
 
-		meshRenderers = originalPrefab.GetComponentsInChildren<MeshRenderer>();
 
 		foreach (var mesh in meshRenderers)
 		{
-			objectBounds.Encapsulate(mesh.bounds);
+			combinedBounds.Encapsulate(mesh.bounds);
 		}
 
-		meshRendererSize = objectBounds.size;
+		meshRendererSize = combinedBounds.size;
 
 		if (apply)
 		{
