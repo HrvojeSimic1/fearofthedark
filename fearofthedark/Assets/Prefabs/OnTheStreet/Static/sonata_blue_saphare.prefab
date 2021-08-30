@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7545105234241471892
+--- !u!1 &1006096828594701706
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3882412565530984098}
-  - component: {fileID: 5423646873173527809}
-  - component: {fileID: 5997656871146113102}
-  - component: {fileID: 1167716717669584239}
-  - component: {fileID: 9121279674261111278}
+  - component: {fileID: 485701636740128560}
+  - component: {fileID: 3535981591718760597}
+  - component: {fileID: 1654690010087515231}
+  - component: {fileID: 7443586820875822737}
   m_Layer: 0
-  m_Name: BottleOfWine_Mesh (1)
+  m_Name: sonata_blue_saphare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3882412565530984098
+--- !u!4 &485701636740128560
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7545105234241471892}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 338.63617, y: -45.682613, z: 46.30924}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_GameObject: {fileID: 1006096828594701706}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1062.3938, y: 186.69725, z: 774.3514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5423646873173527809
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!33 &3535981591718760597
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7545105234241471892}
-  m_Mesh: {fileID: 6489289350816555380, guid: 66ec3af8228ae7747a74575bdec690a4, type: 3}
---- !u!23 &5997656871146113102
+  m_GameObject: {fileID: 1006096828594701706}
+  m_Mesh: {fileID: 7432119881249152332, guid: 27438ca9a1451624d9c9b48cec5a5bd0, type: 3}
+--- !u!23 &1654690010087515231
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7545105234241471892}
+  m_GameObject: {fileID: 1006096828594701706}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,8 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8498072568288798726, guid: 66ec3af8228ae7747a74575bdec690a4, type: 3}
-  - {fileID: -2063684936051385217, guid: 66ec3af8228ae7747a74575bdec690a4, type: 3}
+  - {fileID: 1925815568592772355, guid: 27438ca9a1451624d9c9b48cec5a5bd0, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,33 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &1167716717669584239
-Rigidbody:
+--- !u!65 &7443586820875822737
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7545105234241471892}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!136 &9121279674261111278
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7545105234241471892}
+  m_GameObject: {fileID: 1006096828594701706}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.022717418
-  m_Height: 0.16395865
-  m_Direction: 1
-  m_Center: {x: 0.0000000055879354, y: 0.041522123, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 3.6133144, y: 9.522088, z: 2.9737425}
+  m_Center: {x: 0.00000008196436, y: -0.0034191008, z: 1.4505031}
