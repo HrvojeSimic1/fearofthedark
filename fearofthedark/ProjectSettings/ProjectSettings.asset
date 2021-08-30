@@ -43,7 +43,7 @@ PlayerSettings:
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 320
-  defaultScreenHeight: 240
+  defaultScreenHeight: 180
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
   m_StereoRenderingPath: 0
@@ -122,12 +122,12 @@ PlayerSettings:
   vulkanEnablePreTransform: 0
   vulkanEnableLateAcquireNextImage: 0
   m_SupportedAspectRatios:
-    4:3: 1
+    4:3: 0
     5:4: 0
     16:10: 0
     16:9: 1
     Others: 1
-  bundleVersion: 0.5
+  bundleVersion: 0.7.3
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
