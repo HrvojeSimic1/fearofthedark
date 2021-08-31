@@ -11,6 +11,7 @@ public class LookingAIBehaviour : MonoBehaviour
 
 	private void Update()
 	{
-		transform.LookAt(target);
+		var lookAt = new Vector3(target.position.x, transform.position.y, target.position.z);
+		transform.LookAt(lookAt);
 	}
 }
