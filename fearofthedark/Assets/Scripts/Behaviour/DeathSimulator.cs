@@ -28,6 +28,7 @@ public class DeathSimulator : MonoBehaviour
 		{
 			health -= damagePerHit;
 			healthBar.SetHealth(health);
+			//Debug.Log(health);
 		}
 	}
 
