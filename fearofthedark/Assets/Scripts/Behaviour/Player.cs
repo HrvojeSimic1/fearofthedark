@@ -8,9 +8,12 @@ public class Player : MonoBehaviour
 	[SerializeField] float moveSpeed;
 	[SerializeField] float smoothness;
 	[SerializeField] AudioSource walkSound;
+	[SerializeField] GameObject gameObjectOnOff;
 
 	private float _vertical;
 	private float _horizontal;
+
+	public static bool gameIsPaused;
 
 	private void Start()
 	{
@@ -19,13 +22,22 @@ public class Player : MonoBehaviour
 
 	private void Update()
 	{
-		_vertical = Input.GetAxis("Vertical");
-		_horizontal = Input.GetAxis("Horizontal");
-		var transformAngles = transform.eulerAngles;
-		transformAngles.y = followCamera.transform.eulerAngles.y;
-		transform.eulerAngles = transformAngles;
+		if (!gameIsPaused)
+		{
+			_vertical = Input.GetAxis("Vertical");
+			_horizontal = Input.GetAxis("Horizontal");
+			var transformAngles = transform.eulerAngles;
+			transformAngles.y = followCamera.transform.eulerAngles.y;
+			transform.eulerAngles = transformAngles;
+		}
 
-		if(_vertical + _horizontal > 0.1f && !walkSound.isPlaying)
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			gameIsPaused = !gameIsPaused;
+			PauseGame();
+		}
+
+		if (_vertical + _horizontal > 0.1f && !walkSound.isPlaying)
 		{
 			walkSound.Play();
 		}
@@ -39,4 +51,19 @@ public class Player : MonoBehaviour
 
 		_rigidbody.AddForce(force - new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z), ForceMode.VelocityChange);
 	}
+
+	void PauseGame()
+	{
+		if (gameIsPaused)
+		{
+			Time.timeScale = 0f;
+			gameObjectOnOff.SetActive(true);
+		}
+		else
+		{
+			Time.timeScale = 1;
+			gameObjectOnOff.SetActive(false);
+		}
+	}
+
 }
