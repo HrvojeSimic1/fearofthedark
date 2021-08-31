@@ -2,23 +2,35 @@
 
 public class MovingAIBehaviour : MonoBehaviour
 {
-	[SerializeField] ParentComponent parentComponent;
-	[SerializeField] float speed;
-	private Transform target;
+	[SerializeField] float speed = 2f;
+	[SerializeField] float distance = 10f;
+
+	private Transform player;
+	private Vector3 targetPosition;
+	private Vector3 origionalPosition;
 
 	private void Start()
 	{
-		target = transform;
+		targetPosition = transform.position;
+		origionalPosition = targetPosition;
+		player = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 
 	private void Update()
 	{
-		target = parentComponent.Target;
+		if((origionalPosition - player.position).sqrMagnitude <= distance * distance)
+		{
+			targetPosition = player.position;
+		}
+		else
+		{
+			targetPosition = origionalPosition;
+		}
 	}
 
 	private void FixedUpdate()
 	{
-		if (transform.position != target.position)
+		if (transform.position != targetPosition)
 		{
 			Move();
 			Rotate();
@@ -27,12 +39,12 @@ public class MovingAIBehaviour : MonoBehaviour
 
 	private void Rotate()
 	{
-		Vector3 targetPostition = new Vector3(target.position.x, transform.position.y, target.position.z);
+		Vector3 targetPostition = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
 		transform.LookAt(targetPostition);
 	}
 
 	private void Move()
 	{
-		transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+		transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 	}
 }

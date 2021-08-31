@@ -1,42 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewLevelTrigger : MonoBehaviour
 {
+	public Vector3 collision = Vector3.zero;
+	public LayerMask layer;
 
-    public Vector3 collision = Vector3.zero;
-    public LayerMask layer;
+	public int range = 100;
 
+	public int levelNumber;
 
-    public int range = 100;
+	void Update()
+	{
+		if (Input.GetKey("e"))
+		{
+			var ray = new Ray(transform.position, transform.forward);
+			if (Physics.Raycast(ray, out RaycastHit hit, range, layer))
+			{
+				NextScene();
+			}
+		}
+	}
 
-    public int levelNumber;
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey("e"))
-        {
-            var ray = new Ray(origin: this.transform.position, direction: this.transform.forward);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, range, layer))
-            {
-                Debug.Log(hit.transform.gameObject);
-                NextScene();
-            }
-        }
-    }
-
-    public void NextScene()
-    {
-        SceneManager.LoadScene(levelNumber);
-    }
+	public void NextScene()
+	{
+		SceneManager.LoadScene(levelNumber);
+	}
 
 }
