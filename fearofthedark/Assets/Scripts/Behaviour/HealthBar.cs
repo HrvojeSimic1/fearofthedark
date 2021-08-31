@@ -29,7 +29,7 @@ public class HealthBar : MonoBehaviour
 
 		opacity = 1 - slider.value / 100;
 		Debug.Log(health);
-		Debug.Log(opacity);
+		//Debug.Log(opacity);
 		fill.color = new Color(1, 1, 1, opacity);
 
 		//fill.color = gradient.Evaluate(slider.normalizedValue);
