@@ -19,6 +19,12 @@ public class DeathSimulator : MonoBehaviour
 		if (health <= 0)
 		{
 			gameObjectOnOff.SetActive(true);
+			Time.timeScale = 0f;
+		}
+        if (health < 90 && health > 0)
+        {
+			health++;
+			healthBar.SetHealth(health);
 		}
 	}
 
@@ -28,6 +34,15 @@ public class DeathSimulator : MonoBehaviour
 		{
 			health -= damagePerHit;
 			healthBar.SetHealth(health);
+		}
+
+        else if (collision.collider.CompareTag("Untagged"))
+        {
+			if (health < 90 && health > 0)
+			{
+				health++;
+				healthBar.SetHealth(health);
+			}
 		}
 	}
 

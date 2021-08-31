@@ -10,6 +10,7 @@ public class LevelSwitch : MonoBehaviour
     public void NextScene()
     {
         SceneManager.LoadScene(levelNumber);
+        Time.timeScale = 1;
     }
 
     public void doExitGame()
