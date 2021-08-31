@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
+		Time.timeScale = 1;
 		_rigidbody = GetComponent<Rigidbody>();
 	}
 
