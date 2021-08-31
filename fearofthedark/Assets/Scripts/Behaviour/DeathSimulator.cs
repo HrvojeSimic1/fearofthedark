@@ -8,6 +8,7 @@ public class DeathSimulator : MonoBehaviour
 	[Space]
 	[SerializeField] GameObject gameObjectOnOff;
 
+
 	private void Start()
 	{
 		healthBar.SetMaxHealth(health);
@@ -27,6 +28,7 @@ public class DeathSimulator : MonoBehaviour
 		{
 			health -= damagePerHit;
 			healthBar.SetHealth(health);
+			//Debug.Log(health);
 		}
 	}
 

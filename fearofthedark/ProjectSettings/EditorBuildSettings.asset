@@ -15,12 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/OpeningScene.unity
     guid: c7177dd8de60ba046a84ba4cb89440ff
   - enabled: 1
-    path: Assets/Scenes/Park.unity
-    guid: 52263cf56182063468e78b6f33ef48ad
-  - enabled: 1
     path: Assets/Scenes/Mg.unity
     guid: e9c10c3db0a03d242aba1cedc491b234
   - enabled: 1
     path: Assets/Scenes/House.unity
     guid: bac4c0d08c6c9f74c996fa4655ece952
+  - enabled: 1
+    path: Assets/Scenes/Park.unity
+    guid: 52263cf56182063468e78b6f33ef48ad
   m_configObjects: {}
