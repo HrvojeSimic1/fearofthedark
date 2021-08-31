@@ -1,32 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class VignetteHealth : MonoBehaviour
 {
+	public int opacity;
 
-    public int opacity;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void SetMaxHealth(int health)
+	public void SetMaxHealth(int health)
 	{
-        opacity = health;
+		opacity = health;
 	}
 
-    public void SetHealth(int health)
-    {
-        opacity = health;
-    }
+	public void SetHealth(int health)
+	{
+		opacity = health;
+	}
 
 }
