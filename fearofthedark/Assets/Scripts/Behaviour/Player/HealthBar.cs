@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
 	public Slider slider;
 	public Gradient gradient;
 	public Image fill;
+	public AudioSource noise;
 
 	float opacity;
 
@@ -31,6 +32,8 @@ public class HealthBar : MonoBehaviour
 		//Debug.Log(health);
 		//Debug.Log(opacity);
 		fill.color = new Color(1, 1, 1, opacity);
+
+		noise.volume = opacity;
 
 		//fill.color = gradient.Evaluate(slider.normalizedValue);
 	}
