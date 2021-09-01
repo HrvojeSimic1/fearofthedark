@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 			PauseGame();
 		}
 
-        if (_vertical + _horizontal > 0.1f && !walkSound.isPlaying)
+        if (_vertical + _horizontal != 0 && !walkSound.isPlaying)
         {
             walkSound.Play();
         }
