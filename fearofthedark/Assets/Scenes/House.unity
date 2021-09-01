@@ -9472,9 +9472,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4669476087103366588, guid: ff325768761a502439c0664622d8cbd5,
         type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669476087103366588, guid: ff325768761a502439c0664622d8cbd5,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669476087103366588, guid: ff325768761a502439c0664622d8cbd5,
+        type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: ce9e04619316d264caa4e2679d4dd1c0, type: 3}
     - target: {fileID: 6420246002434358252, guid: ff325768761a502439c0664622d8cbd5,
         type: 3}
       propertyPath: gameObjectOnOff
