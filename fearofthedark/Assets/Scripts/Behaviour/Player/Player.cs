@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 	private void Start()
 	{
 		Time.timeScale = 1;
+		AudioListener.pause = false;
+
 		_rigidbody = GetComponent<Rigidbody>();
 	}
 
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
 		{
 			gameIsPaused = !gameIsPaused;
 			PauseGame();
+			AudioListener.pause = gameIsPaused;
 		}
 
         if (_vertical + _horizontal != 0 && !walkSound.isPlaying)

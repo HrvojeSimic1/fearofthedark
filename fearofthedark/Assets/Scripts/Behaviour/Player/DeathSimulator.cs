@@ -4,6 +4,7 @@ public class DeathSimulator : MonoBehaviour
 {
 	[SerializeField] [Range(0, 100)] int health;
 	[SerializeField] [Range(0, 100)] int damagePerHit;
+	[SerializeField] [Range(0, 100)] int regen;
 	[SerializeField] HealthBar healthBar;
 	[Space]
 	[SerializeField] GameObject gameObjectOnOff;
@@ -19,11 +20,8 @@ public class DeathSimulator : MonoBehaviour
 		{
 			gameObjectOnOff.SetActive(true);
 			Time.timeScale = 0f;
-		}
-        if (health > 0 && health < 90)
-        {
-			health++;
-			healthBar.SetHealth(health);
+
+			AudioListener.pause = true;
 		}
 	}
 
@@ -34,14 +32,12 @@ public class DeathSimulator : MonoBehaviour
 			health -= damagePerHit;
 			healthBar.SetHealth(health);
 		}
-	}
-
-	private void OnTriggerStay(Collider other)
-	{
-		if (other.CompareTag("Dark"))
-		{
-			health -= damagePerHit;
+        else if(health>0 && health<90)
+        {
+			health += regen;
 			healthBar.SetHealth(health);
 		}
 	}
+
+
 }
