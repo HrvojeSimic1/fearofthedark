@@ -8,7 +8,6 @@ public class DeathSimulator : MonoBehaviour
 	[Space]
 	[SerializeField] GameObject gameObjectOnOff;
 
-
 	private void Start()
 	{
 		healthBar.SetMaxHealth(health);
