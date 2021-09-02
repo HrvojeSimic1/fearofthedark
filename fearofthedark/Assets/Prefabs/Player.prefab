@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3568366863571060828}
+  - component: {fileID: 1409278411}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -33,6 +34,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1409278411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484825111271901165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f6681e187d3f34b8475b169b130c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6420246002434358242
 GameObject:
   m_ObjectHideFlags: 0
@@ -49,6 +62,7 @@ GameObject:
   - component: {fileID: 4669476087103366588}
   - component: {fileID: 6420246002434358252}
   - component: {fileID: 8976225262075172033}
+  - component: {fileID: 1666945043}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -159,11 +173,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d6e28adedb200a747a4ba9bde764aa4c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 031f84125dd39ef4ca16d55df1c4394a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
+  m_Volume: 0.1
+  m_Pitch: 0.7
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -258,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followCamera: {fileID: 6420246002627323633}
-  moveSpeed: 2
+  moveSpeed: 3
   smoothness: 5
   walkSound: {fileID: 4669476087103366588}
   gameObjectOnOff: {fileID: 0}
@@ -275,9 +289,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  damagePerHit: 10
+  damagePerHit: 2
+  regen: 1
   healthBar: {fileID: 0}
   gameObjectOnOff: {fileID: 0}
+--- !u!114 &1666945043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420246002434358242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f09c34850475a043802b6615e09683d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collision: {x: 0, y: 0, z: 0}
+  levelTriggerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  range: 20
+  levelNumber: 4
 --- !u!1 &6420246002627323634
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6420246002627323634}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.295, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3568366863571060828}
@@ -323,7 +356,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -337,7 +370,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 100
   field of view: 60
   orthographic: 0
   orthographic size: 5
